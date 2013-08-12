@@ -9,7 +9,7 @@
 $PluginInfo['jsconnect'] = array(
    'Name' => 'Vanilla jsConnect',
    'Description' => 'Enables custom single sign-on solutions. They can be same-domain or cross-domain. See the <a href="http://vanillaforums.org/docs/jsconnect">documentation</a> for details.',
-   'Version' => '1.4.1',
+   'Version' => '1.4.1.1',
    'RequiredApplications' => array('Vanilla' => '2.0.18b1'),
    'MobileFriendly' => TRUE,
    'Author' => 'Todd Burry',
@@ -264,6 +264,7 @@ class JsConnectPlugin extends Gdn_Plugin {
       
       // Now add any extended information that jsConnect might have sent.
       $ExtData = array_diff_key($JsData, $Map);
+      unset($ExtData['DateFirstVisit']);
       
       if (class_exists('SimpleAPIPlugin')) {
          SimpleAPIPlugin::TranslatePost($ExtData, FALSE);
